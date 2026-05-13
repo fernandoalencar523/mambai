@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Águas de Mambaí — Chalés de Luxo no Cerrado Goiano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --preto: #080808;
+  --preto-card: #0f0f0f;
+  --preto-medio: #141414;
+  --preto-borda: #1e1e1e;
+  --laranja: #e07520;
+  --laranja-vivo: #f08030;
+  --laranja-claro: #f5a055;
+  --laranja-glow: rgba(224,117,32,0.12);
+  --branco: #f8f4ef;
+  --branco-puro: #ffffff;
+  --cinza-claro: #b0a898;
+  --cinza: #6a6258;
+  --dourado: #b8903a;
+  --dourado-claro: #d4aa5a;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--preto);color:var(--branco);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--preto);}
+::-webkit-scrollbar-thumb{background:var(--laranja);border-radius:2px;}
+
+/* ─── HEADER ─── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  padding:0 5%;height:80px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all 0.5s ease;
+}
+header.scrolled{
+  background:rgba(8,8,8,0.96);
+  backdrop-filter:blur(20px);
+  height:64px;
+  border-bottom:1px solid rgba(224,117,32,0.12);
+}
+
+/* SVG LOGO STYLES */
+.logo{text-decoration:none;display:flex;align-items:center;}
+.logo-svg{
+  height:52px;width:auto;
+  transition:all 0.4s ease;
+  filter:drop-shadow(0 2px 12px rgba(224,117,32,0.18));
+}
+header.scrolled .logo-svg{height:42px;}
+
+nav{display:flex;align-items:center;gap:2.4rem;}
+nav a{
+  font-family:'Jost',sans-serif;font-weight:300;font-size:0.7rem;
+  letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(248,244,239,0.6);text-decoration:none;
+  transition:color 0.3s;position:relative;
+}
+nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--laranja);transition:width 0.35s;}
+nav a:hover{color:var(--laranja);}
+nav a:hover::after{width:100%;}
+.nav-cta{
+  background:transparent!important;color:var(--laranja)!important;
+  border:1px solid rgba(224,117,32,0.5)!important;
+  padding:9px 22px;border-radius:2px;
+  transition:all 0.3s!important;letter-spacing:0.2em!important;
+}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:var(--laranja)!important;color:var(--preto)!important;border-color:var(--laranja)!important;}
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:950;}
+.hamburger span{display:block;width:24px;height:1.5px;background:var(--branco);transition:all 0.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+.nav-mobile{
+  display:none;position:fixed;inset:0;z-index:940;
+  background:var(--preto);
+  flex-direction:column;align-items:center;justify-content:center;gap:2.8rem;
+  border-top:1px solid rgba(224,117,32,0.2);
+}
+.nav-mobile.open{display:flex;}
+.nav-mobile a{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--branco);text-decoration:none;font-weight:300;letter-spacing:0.08em;transition:color 0.3s;}
+.nav-mobile a:hover{color:var(--laranja);}
+
+/* ─── HERO ─── */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(105deg, rgba(8,8,8,0.92) 38%, rgba(8,8,8,0.5) 70%, rgba(8,8,8,0.3) 100%);
+  z-index:1;
+}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.04);animation:heroZoom 26s ease-in-out infinite alternate;}
+@keyframes heroZoom{from{transform:scale(1.04);}to{transform:scale(1.1);}}
+
+.hero-line-left{
+  position:absolute;left:5%;top:0;bottom:0;z-index:2;
+  width:1px;background:linear-gradient(to bottom,transparent 10%,rgba(224,117,32,0.35) 40%,rgba(224,117,32,0.35) 60%,transparent 90%);
+  pointer-events:none;
+}
+
+.hero-content{
+  position:relative;z-index:3;padding:0 8% 0 8%;
+  max-width:820px;
+  animation:fadeUp 1.3s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(50px);}to{opacity:1;transform:translateY(0);}}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:'Jost',sans-serif;font-size:0.58rem;letter-spacing:0.48em;
+  text-transform:uppercase;color:var(--laranja);font-weight:300;
+  margin-bottom:2rem;
+}
+.hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--laranja);}
+
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,6.5vw,6.5rem);
+  font-weight:300;color:var(--branco);line-height:1.04;
+  margin-bottom:2rem;letter-spacing:0.01em;
+}
+.hero h1 em{font-style:italic;color:var(--laranja);font-weight:300;}
+
+.hero-desc{
+  font-family:'Jost',sans-serif;font-size:0.92rem;font-weight:300;
+  color:rgba(248,244,239,0.58);line-height:2;
+  max-width:460px;margin-bottom:3.5rem;letter-spacing:0.03em;
+}
+
+.hero-ctas{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--laranja);color:var(--preto);
+  padding:15px 40px;border-radius:2px;
+  font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:500;
+  letter-spacing:0.28em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:all 0.35s;
+  box-shadow:0 6px 36px rgba(224,117,32,0.28);
+  display:inline-block;
+}
+.btn-primary:hover{background:var(--laranja-claro);transform:translateY(-2px);box-shadow:0 14px 48px rgba(224,117,32,0.38);}
+.btn-secondary{
+  font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:300;
+  letter-spacing:0.28em;text-transform:uppercase;color:rgba(248,244,239,0.6);
+  text-decoration:none;display:flex;align-items:center;gap:10px;
+  cursor:pointer;background:none;border:none;transition:color 0.3s;
+}
+.btn-secondary:hover{color:var(--laranja);}
+.btn-secondary svg{transition:transform 0.3s;}
+.btn-secondary:hover svg{transform:translateX(5px);}
+
+.hero-pill{
+  position:absolute;z-index:3;
+  background:rgba(8,8,8,0.75);
+  border:1px solid rgba(224,117,32,0.4);
+  backdrop-filter:blur(12px);
+  font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;
+  color:var(--branco);padding:10px 22px;border-radius:2px;letter-spacing:0.1em;
+  animation:floatPill 5s ease-in-out infinite;
+}
+.hero-pill.p1{top:28%;right:7%;animation-delay:0s;}
+.hero-pill.p2{top:48%;right:13%;animation-delay:1.8s;}
+.hero-pill.p3{top:68%;right:5%;animation-delay:1s;}
+@keyframes floatPill{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+.hero-scroll{
+  position:absolute;bottom:2.8rem;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0.45;
+}
+.scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,transparent,var(--laranja));animation:scrollPulse 2.4s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:0.2;}50%{opacity:1;}}
+.scroll-txt{font-family:'Jost',sans-serif;font-size:0.48rem;letter-spacing:0.45em;color:var(--laranja);text-transform:uppercase;}
+
+/* ─── DATA BAR ─── */
+.databar{
+  background:var(--laranja);padding:1.6rem 8%;
+  display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;
+}
+.databar-item{display:flex;align-items:center;gap:1.2rem;}
+.databar-label{font-family:'Jost',sans-serif;font-size:0.62rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(8,8,8,0.6);font-weight:300;}
+.databar-input{
+  background:rgba(8,8,8,0.12);border:1px solid rgba(8,8,8,0.2);
+  border-radius:2px;padding:9px 18px;
+  font-family:'Jost',sans-serif;font-size:0.8rem;color:var(--preto);font-weight:400;
+  letter-spacing:0.05em;cursor:pointer;display:flex;align-items:center;gap:8px;
+  transition:background 0.3s;
+}
+.databar-input:hover{background:rgba(8,8,8,0.2);}
+.databar-sep{width:1px;height:28px;background:rgba(8,8,8,0.2);}
+.databar-btn{
+  background:var(--preto);color:var(--laranja);
+  border:none;padding:10px 28px;border-radius:2px;
+  font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;font-weight:500;
+  cursor:pointer;transition:all 0.3s;
+}
+.databar-btn:hover{background:rgba(8,8,8,0.85);}
+
+/* ─── SECTION COMMONS ─── */
+.section{padding:8rem 8%;}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:'Jost',sans-serif;font-size:0.55rem;letter-spacing:0.45em;
+  text-transform:uppercase;color:var(--laranja);font-weight:300;
+  margin-bottom:1.2rem;
+}
+.sec-tag::before{content:'';width:32px;height:1px;background:var(--laranja);}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,4vw,3.6rem);font-weight:300;
+  color:var(--branco);line-height:1.1;margin-bottom:1rem;letter-spacing:0.02em;
+}
+.sec-title em{font-style:italic;color:var(--laranja);}
+.sec-sub{
+  font-family:'Jost',sans-serif;font-size:0.85rem;font-weight:300;
+  color:rgba(248,244,239,0.45);line-height:2;letter-spacing:0.03em;max-width:480px;
+}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ─── SOBRE / INTRO ─── */
+.sobre{display:grid;grid-template-columns:1fr 1fr;min-height:600px;}
+.sobre-img{position:relative;overflow:hidden;}
+.sobre-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;}
+.sobre-img:hover img{transform:scale(1.04);}
+.sobre-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 55%,var(--preto-medio));}
+.sobre-body{
+  background:var(--preto-medio);padding:7rem 6%;
+  display:flex;flex-direction:column;justify-content:center;
+  border-left:1px solid var(--preto-borda);
+}
+.sobre-features{display:flex;flex-direction:column;gap:1rem;margin-top:2.4rem;}
+.sobre-feat{
+  display:flex;align-items:flex-start;gap:14px;padding:1.1rem 1.4rem;
+  background:rgba(224,117,32,0.04);border:1px solid rgba(224,117,32,0.1);border-radius:2px;
+  transition:border-color 0.3s;
+}
+.sobre-feat:hover{border-color:rgba(224,117,32,0.28);}
+.sobre-feat-dot{width:5px;height:5px;border-radius:50%;background:var(--laranja);flex-shrink:0;margin-top:7px;}
+.sobre-feat p{font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:300;color:rgba(248,244,239,0.55);line-height:1.8;}
+.sobre-feat strong{font-weight:400;color:var(--branco-puro);}
+
+/* ─── CHALÉS ─── */
+.chales-section{background:var(--preto-medio);}
+.chales-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;flex-wrap:wrap;gap:2rem;}
+.chales-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+.chale-card{
+  background:var(--preto-card);border:1px solid var(--preto-borda);
+  border-radius:3px;overflow:hidden;
+  transition:all 0.45s ease;cursor:pointer;
+}
+.chale-card:hover{
+  transform:translateY(-10px);border-color:rgba(224,117,32,0.38);
+  box-shadow:0 28px 72px rgba(0,0,0,0.65),0 0 0 1px rgba(224,117,32,0.08);
+}
+.chale-img{position:relative;height:240px;overflow:hidden;}
+.chale-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease;}
+.chale-card:hover .chale-img img{transform:scale(1.08);}
+.chale-img::after{position:absolute;content:'';inset:0;background:linear-gradient(to top,rgba(8,8,8,0.75),transparent 55%);}
+.chale-badge{
+  position:absolute;top:16px;right:16px;z-index:1;
+  background:var(--laranja);color:var(--preto);
+  font-family:'Jost',sans-serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;
+  padding:5px 13px;border-radius:1px;font-weight:500;
+}
+.chale-body{padding:2rem;}
+.chale-name{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400;color:var(--branco);margin-bottom:0.5rem;line-height:1.2;letter-spacing:0.04em;}
+.chale-desc{font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:300;color:rgba(248,244,239,0.5);line-height:1.9;margin-bottom:1.5rem;}
+.chale-tags{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.6rem;}
+.chale-tag{
+  font-family:'Jost',sans-serif;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--laranja);background:rgba(224,117,32,0.08);
+  padding:5px 12px;border:1px solid rgba(224,117,32,0.18);
+}
+.chale-foot{display:flex;align-items:center;justify-content:space-between;padding-top:1.4rem;border-top:1px solid var(--preto-borda);}
+.chale-price-sub{font-family:'Jost',sans-serif;font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cinza);font-weight:300;margin-bottom:2px;}
+.chale-price{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:400;color:var(--laranja);line-height:1;}
+.chale-price small{font-size:0.9rem;color:var(--cinza);font-family:'Jost',sans-serif;font-weight:300;}
+.btn-reservar{
+  background:var(--laranja);color:var(--preto);
+  padding:10px 22px;border-radius:2px;
+  font-family:'Jost',sans-serif;font-size:0.62rem;font-weight:500;
+  letter-spacing:0.2em;text-transform:uppercase;border:none;cursor:pointer;
+  transition:all 0.3s;
+}
+.btn-reservar:hover{background:var(--laranja-claro);transform:scale(1.03);}
+
+/* ─── PACOTES ─── */
+.pacotes-section{background:var(--preto);position:relative;overflow:hidden;}
+.pacotes-section::before{
+  content:'';position:absolute;top:-300px;right:-300px;
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(224,117,32,0.06) 0%,transparent 65%);
+  pointer-events:none;
+}
+.pacotes-carousel{display:flex;gap:1.4rem;margin-top:4rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;-ms-overflow-style:none;scrollbar-width:none;}
+.pacotes-carousel::-webkit-scrollbar{display:none;}
+.pacote-card{
+  flex:0 0 280px;scroll-snap-align:start;
+  background:var(--preto-card);border:1px solid var(--preto-borda);
+  border-radius:3px;padding:2.4rem 2rem;
+  transition:all 0.4s;cursor:pointer;position:relative;overflow:hidden;
+}
+.pacote-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--laranja),transparent);
+  opacity:0;transition:opacity 0.4s;
+}
+.pacote-card:hover{border-color:rgba(224,117,32,0.32);transform:translateY(-8px);}
+.pacote-card:hover::after{opacity:1;}
+.pacote-card.featured{border-color:rgba(224,117,32,0.38);background:rgba(224,117,32,0.04);}
+.pacote-card.featured::after{opacity:1;}
+.pacote-badge-top{
+  display:inline-block;background:var(--laranja);color:var(--preto);
+  font-family:'Jost',sans-serif;font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;
+  padding:4px 12px;margin-bottom:1.6rem;
+}
+.pacote-img{width:100%;height:150px;object-fit:cover;border-radius:2px;margin-bottom:1.4rem;}
+.pacote-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--branco);margin-bottom:0.5rem;letter-spacing:0.04em;}
+.pacote-desc{font-family:'Jost',sans-serif;font-size:0.76rem;font-weight:300;color:rgba(248,244,239,0.48);line-height:1.85;margin-bottom:1.8rem;}
+.pacote-price{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:var(--laranja);margin-bottom:1.4rem;line-height:1;}
+.pacote-price small{font-size:0.8rem;color:rgba(248,244,239,0.3);font-family:'Jost',sans-serif;font-weight:300;}
+.pacote-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:2rem;}
+.pacote-list li{
+  font-family:'Jost',sans-serif;font-size:0.73rem;font-weight:300;
+  color:rgba(248,244,239,0.52);display:flex;align-items:center;gap:9px;letter-spacing:0.03em;
+}
+.pacote-list li::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--laranja);flex-shrink:0;}
+.btn-pacote{
+  width:100%;background:transparent;color:var(--laranja);
+  border:1px solid rgba(224,117,32,0.32);padding:12px;
+  font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.3s;font-weight:400;
+}
+.btn-pacote:hover,.pacote-card.featured .btn-pacote{background:var(--laranja);color:var(--preto);border-color:var(--laranja);font-weight:500;}
+
+.carousel-nav{display:flex;gap:10px;margin-top:2.5rem;}
+.carousel-btn{
+  width:40px;height:40px;border-radius:50%;background:transparent;
+  border:1px solid rgba(224,117,32,0.3);color:var(--laranja);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all 0.3s;font-size:1rem;
+}
+.carousel-btn:hover{background:var(--laranja);color:var(--preto);}
+
+/* ─── SERVIÇOS ─── */
+.servicos-section{background:var(--preto-medio);}
+.servicos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem;}
+@media(min-width:1200px){.servicos-grid{grid-template-columns:repeat(6,1fr);}}
+.servico-item{
+  padding:2.4rem 1.6rem;border:1px solid var(--preto-borda);
+  text-align:center;transition:all 0.4s;background:var(--preto-card);
+}
+.servico-item:hover{border-color:rgba(224,117,32,0.3);transform:translateY(-6px);}
+.servico-icon{
+  width:54px;height:54px;
+  background:rgba(224,117,32,0.08);border:1px solid rgba(224,117,32,0.18);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.4rem;font-size:1.3rem;transition:all 0.35s;
+}
+.servico-item:hover .servico-icon{background:var(--laranja);border-color:var(--laranja);transform:scale(1.1);}
+.servico-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:400;color:var(--branco);margin-bottom:0.5rem;letter-spacing:0.04em;}
+.servico-desc{font-family:'Jost',sans-serif;font-size:0.74rem;font-weight:300;color:var(--cinza-claro);line-height:1.85;opacity:0.7;}
+
+/* ─── CTA FAIXA ─── */
+.cta-faixa{
+  background:var(--laranja);padding:5.5rem 8%;
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+}
+.cta-faixa h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.5vw,3rem);font-weight:300;color:var(--preto);line-height:1.2;}
+.cta-faixa h2 em{font-style:italic;}
+.cta-faixa p{font-family:'Jost',sans-serif;font-size:0.82rem;font-weight:300;color:rgba(8,8,8,0.6);margin-top:0.5rem;letter-spacing:0.05em;}
+.btn-cta-inv{
+  background:var(--preto);color:var(--laranja);
+  padding:16px 44px;
+  font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:500;
+  letter-spacing:0.28em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all 0.3s;white-space:nowrap;
+}
+.btn-cta-inv:hover{background:var(--preto-medio);transform:translateY(-2px);}
+
+/* ─── FOOTER ─── */
+footer{background:var(--preto-card);padding:5rem 8% 2.5rem;border-top:1px solid var(--preto-borda);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem;padding-bottom:4rem;border-bottom:1px solid rgba(255,255,255,0.05);}
+.footer-brand .logo{margin-bottom:1.6rem;}
+.footer-brand p{font-family:'Jost',sans-serif;font-size:0.78rem;font-weight:300;color:rgba(248,244,239,0.38);line-height:2;max-width:260px;}
+.footer-social{display:flex;gap:10px;margin-top:2rem;}
+.social-btn{width:36px;height:36px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;color:rgba(248,244,239,0.4);text-decoration:none;transition:all 0.3s;}
+.social-btn:hover{background:var(--laranja);color:var(--preto);border-color:var(--laranja);}
+.footer-col h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:var(--laranja);margin-bottom:1.6rem;letter-spacing:0.08em;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.footer-col ul li a{font-family:'Jost',sans-serif;font-size:0.76rem;font-weight:300;color:rgba(248,244,239,0.38);text-decoration:none;transition:color 0.3s;letter-spacing:0.04em;}
+.footer-col ul li a:hover{color:var(--laranja);}
+.contact-item{font-family:'Jost',sans-serif;font-size:0.76rem;font-weight:300;color:rgba(248,244,239,0.38);display:flex;align-items:flex-start;gap:10px;margin-bottom:14px;line-height:1.6;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-family:'Jost',sans-serif;font-size:0.62rem;color:rgba(248,244,239,0.18);letter-spacing:0.12em;font-weight:300;}
+
+/* Footer logo smaller */
+.footer-brand .logo-svg{height:40px;}
+
+/* ─── MODAL ─── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:9998;
+  background:rgba(8,8,8,0.92);backdrop-filter:blur(28px);
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+.modal-overlay.open{display:flex;}
+.modal{
+  background:var(--preto-card);border:1px solid var(--preto-borda);
+  width:100%;max-width:540px;max-height:92vh;overflow-y:auto;
+  animation:modalIn 0.42s cubic-bezier(0.34,1.4,0.64,1) both;
+  position:relative;
+}
+@keyframes modalIn{from{opacity:0;transform:scale(0.88) translateY(40px);}to{opacity:1;transform:scale(1) translateY(0);}}
+.modal-header{padding:2.5rem 2.5rem 1.8rem;border-bottom:1px solid var(--preto-borda);position:relative;}
+.modal-tag{font-family:'Jost',sans-serif;font-size:0.52rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--laranja);font-weight:300;margin-bottom:0.6rem;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--branco);line-height:1.2;letter-spacing:0.04em;}
+.modal-sub{font-family:'Jost',sans-serif;font-size:0.76rem;color:var(--cinza);font-weight:300;margin-top:4px;letter-spacing:0.04em;}
+.modal-close{
+  position:absolute;top:2rem;right:2rem;
+  background:var(--preto-borda);border:none;width:34px;height:34px;
+  cursor:pointer;font-size:0.95rem;display:flex;align-items:center;justify-content:center;
+  color:var(--cinza);transition:all 0.3s;
+}
+.modal-close:hover{background:var(--laranja);color:var(--preto);}
+.modal-body{padding:2rem 2.5rem;}
+.form-group{margin-bottom:1.3rem;}
+.form-label{display:block;font-family:'Jost',sans-serif;font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cinza);font-weight:400;margin-bottom:8px;}
+.form-input{
+  width:100%;padding:13px 16px;border:1px solid var(--preto-borda);
+  font-family:'Jost',sans-serif;font-size:0.84rem;font-weight:300;
+  color:var(--branco);background:var(--preto-medio);transition:all 0.3s;outline:none;letter-spacing:0.03em;
+}
+.form-input:focus{border-color:var(--laranja);box-shadow:0 0 0 3px rgba(224,117,32,0.08);}
+.form-input option{background:var(--preto-card);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-divider{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--cinza);font-style:italic;margin:1.8rem 0 1.3rem;padding-bottom:10px;border-bottom:1px solid var(--preto-borda);letter-spacing:0.06em;}
+.pag-tabs{display:flex;gap:8px;margin-bottom:1.4rem;}
+.pag-tab{
+  flex:1;background:transparent;color:rgba(248,244,239,0.45);
+  border:1px solid var(--preto-borda);padding:10px 6px;
+  font-family:'Jost',sans-serif;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.3s;font-weight:300;
+}
+.pag-tab.active,.pag-tab:hover{background:var(--laranja);color:var(--preto);border-color:var(--laranja);font-weight:500;}
+.card-wrapper{position:relative;}
+.card-brand{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;}
+.pag-box{
+  border:1px solid var(--preto-borda);padding:1.8rem;text-align:center;background:rgba(224,117,32,0.03);
+}
+.pag-box-icon{font-size:2rem;margin-bottom:0.8rem;}
+.pag-box-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--branco);margin-bottom:0.6rem;}
+.pag-box-info{font-family:'Jost',sans-serif;font-size:0.76rem;font-weight:300;color:var(--cinza-claro);line-height:1.8;}
+.modal-footer{padding:1.5rem 2.5rem 2.5rem;border-top:1px solid var(--preto-borda);}
+.total-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.4rem;}
+.total-label{font-family:'Jost',sans-serif;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cinza);font-weight:300;}
+.total-value{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:400;color:var(--laranja);}
+.btn-finalizar{
+  width:100%;background:var(--laranja);color:var(--preto);
+  padding:16px;border:none;
+  font-family:'Jost',sans-serif;font-size:0.68rem;font-weight:500;
+  letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;
+  transition:all 0.35s;
+}
+.btn-finalizar:hover{background:var(--laranja-claro);transform:translateY(-2px);}
+
+.overlay-panel{
+  display:none;position:absolute;inset:0;z-index:10;
+  background:var(--preto-card);
+  flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:3rem;
+}
+.overlay-panel.show{display:flex;}
+.spinner{width:42px;height:42px;border:1.5px solid var(--preto-borda);border-top-color:var(--laranja);border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:1.6rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-family:'Jost',sans-serif;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cinza);font-weight:300;}
+.success-check{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(224,117,32,0.1);border:1px solid var(--laranja);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 2rem;font-size:1.8rem;color:var(--laranja);
+  animation:popIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes popIn{from{opacity:0;transform:scale(0.5);}to{opacity:1;transform:scale(1);}}
+.success-title{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--branco);margin-bottom:0.8rem;letter-spacing:0.04em;}
+.success-sub{font-family:'Jost',sans-serif;font-size:0.8rem;font-weight:300;color:var(--cinza-claro);line-height:1.9;max-width:360px;margin:0 auto 1.6rem;}
+.success-code{
+  font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;
+  color:var(--laranja);letter-spacing:0.15em;margin-bottom:2.4rem;
+}
+.btn-fechar-success{
+  background:var(--laranja);color:var(--preto);
+  padding:13px 36px;border:none;
+  font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:500;
+  letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;
+}
+.btn-fechar-success:hover{background:var(--laranja-claro);}
+
+/* ─── WHATSAPP FLOAT ─── */
+.wa-float{
+  position:fixed;bottom:2.2rem;right:2rem;z-index:800;
+  width:52px;height:52px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 28px rgba(37,211,102,0.4);
+  transition:all 0.3s;text-decoration:none;
+}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 10px 36px rgba(37,211,102,0.5);}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1100px){
+  .chales-grid{grid-template-columns:repeat(2,1fr);}
+  .servicos-grid{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:3rem;}
+}
+@media(max-width:900px){
+  .sobre{grid-template-columns:1fr;min-height:auto;}
+  .sobre-img{height:360px;}
+  .sobre-img::after{background:linear-gradient(to bottom,transparent 55%,var(--preto-medio));}
+  .hero-pill{display:none;}
+  nav{display:none;}
+  .hamburger{display:flex;}
+  .databar{gap:1.2rem;}
+  .databar-sep{display:none;}
+  .hero h1{font-size:clamp(2.4rem,8vw,4rem);}
+}
+@media(max-width:680px){
+  .section{padding:5.5rem 6%;}
+  .chales-grid{grid-template-columns:1fr;}
+  .servicos-grid{grid-template-columns:repeat(2,1fr);}
+  .cta-faixa{flex-direction:column;text-align:center;}
+  .footer-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .modal{margin:0;}
+  .modal-body,.modal-header,.modal-footer{padding-left:1.5rem;padding-right:1.5rem;}
+  .databar{flex-direction:column;align-items:stretch;gap:1rem;}
+  .databar-item{justify-content:space-between;}
+  .hero-content{padding:0 6%;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header id="header">
+  <a class="logo" href="#">
+     <img src="./logoagua.png"
+     alt="Águas de Mambaí Ecopousada"
+
+     style="
+     height:90px;
+     width:auto;
+     object-fit:contain;
+     display:block;
+
+     margin-top:20px;
+     margin-bottom:20px;
+
+     position:relative;
+     z-index:10;
+     ">
+    <!-- SVG Logo — Águas de Mambaí premium mark -->
+    <svg class="logo-svg" viewBox="0 0 260 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Águas de Mambaí">
+     
+      
+    </svg>
+  </a>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#chales">Chalés</a>
+    <a href="#pacotes">Pacotes</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Fale Conosco</a>
+    <a href="#pacotes" class="nav-cta">Reservar</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="#inicio" onclick="toggleMenu()">Início</a>
+  <a href="#chales" onclick="toggleMenu()">Chalés</a>
+  <a href="#pacotes" onclick="toggleMenu()">Pacotes</a>
+  <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+  <a href="#contato" onclick="toggleMenu()">Contato</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="inicio">
+  <img class="hero-img" src="chale3.jpeg" alt="Águas de Mambaí — Vista Panorâmica">
+  <div class="hero-bg"></div>
+  <div class="hero-line-left"></div>
+
+  <div class="hero-pill p1">Conforto</div>
+  <div class="hero-pill p2">Natureza</div>
+  <div class="hero-pill p3">Exclusividade</div>
+
+  <div class="hero-content" style="padding-top: 50px;">
+    
+    <h1>Descubra um novo<br>conceito de <em>descanso</em></h1>
+    <p class="hero-desc">Em meio à natureza exuberante do cerrado goiano, nascemos para oferecer uma experiência que vai além do convencional — onde cada detalhe foi pensado para que você se desconecte do mundo e se reconecte com o essencial.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="abrirModal('Reserva','R$1.200')">Reservar Agora</button>
+      <a href="#chales" class="btn-secondary">
+        Ver Chalés
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span class="scroll-txt">Scroll</span>
+  </div>
+</section>
+
+<!-- ═══ DATE BAR ═══ -->
+<div class="databar">
+  <div class="databar-item">
+    <span class="databar-label">Check-in</span>
+    <div class="databar-input">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      5 de Março de 2026
+    </div>
+  </div>
+  <div class="databar-sep"></div>
+  <div class="databar-item">
+    <span class="databar-label">Check-out</span>
+    <div class="databar-input">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      10 de Março de 2026
+    </div>
+  </div>
+  <button class="databar-btn" onclick="abrirModal('Reserva','R$1.200')">Ver Disponibilidade</button>
+</div>
+
+<!-- ═══ SOBRE ═══ -->
+<div class="sobre">
+  <div class="sobre-img">
+    <img src="chale2.jpeg" alt="Entrada — Águas de Mambaí">
+  </div>
+  <div class="sobre-body">
+    <div class="sec-tag">Nossa História</div>
+    <h2 class="sec-title">Um refúgio no coração<br>do <em>cerrado goiano</em></h2>
+    <p class="sec-sub">Ambientes sofisticados e aconchegantes pensados para proporcionar conforto, exclusividade e uma experiência inesquecível.</p>
+    <div class="sobre-features">
+      <div class="sobre-feat reveal">
+        <div class="sobre-feat-dot"></div>
+        <p><strong>Hospedagem Premium</strong> — Chalés modernos à beira d'água com acabamento de alto padrão.</p>
+      </div>
+      <div class="sobre-feat reveal" style="transition-delay:0.1s">
+        <div class="sobre-feat-dot"></div>
+        <p><strong>Natureza Preservada</strong> — Em meio à vegetação nativa do cerrado goiano.</p>
+      </div>
+      <div class="sobre-feat reveal" style="transition-delay:0.2s">
+        <div class="sobre-feat-dot"></div>
+        <p><strong>Atendimento Personalizado</strong> — Equipe preparada para uma experiência exclusiva do início ao fim.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CHALÉS ═══ -->
+<section class="section chales-section" id="chales">
+  <div class="chales-header">
+    <div>
+      <div class="sec-tag">Acomodações</div>
+      <h2 class="sec-title">Nossos <em>Chalés</em></h2>
+    </div>
+    <p class="sec-sub">Cada chalé foi projetado para oferecer uma experiência única em contato com a natureza.</p>
+  </div>
+  <div class="chales-grid">
+
+    <!-- Card 1 -->
+    <div class="chale-card reveal" onclick="abrirModal('Chalé Nascente','R$850')">
+      <div class="chale-img">
+        <img src="chale1.jpeg" alt="Chalé Nascente — Vista Noturna">
+        <span class="chale-badge">Mais Reservado</span>
+      </div>
+      <div class="chale-body">
+        <div class="chale-name">Chalé Nascente</div>
+        <p class="chale-desc">Design moderno em madeira com vista privilegiada para o lago e o cerrado ao redor.</p>
+        <div class="chale-tags">
+          <span class="chale-tag">Hidromassagem</span>
+          <span class="chale-tag">Café Incluso</span>
+          <span class="chale-tag">Varanda</span>
+        </div>
+        <div class="chale-foot">
+          <div>
+            <div class="chale-price-sub">A partir de</div>
+            <div class="chale-price">R$850 <small>/ noite</small></div>
+          </div>
+          <button class="btn-reservar" onclick="event.stopPropagation();abrirModal('Chalé Nascente','R$850')">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="chale-card reveal" style="transition-delay:0.1s" onclick="abrirModal('Chalé Lago','R$1.100')">
+      <div class="chale-img">
+        <img src="chale3.jpeg" alt="Chalé Lago — Piscina Panorâmica">
+        <span class="chale-badge">Exclusivo</span>
+      </div>
+      <div class="chale-body">
+        <div class="chale-name">Chalé Lago</div>
+        <p class="chale-desc">Frente ao espelho d'água, com deck privativo e piscina individual de vidro panorâmica.</p>
+        <div class="chale-tags">
+          <span class="chale-tag">Piscina Privativa</span>
+          <span class="chale-tag">Vista Lago</span>
+          <span class="chale-tag">Deck</span>
+        </div>
+        <div class="chale-foot">
+          <div>
+            <div class="chale-price-sub">A partir de</div>
+            <div class="chale-price">R$1.100 <small>/ noite</small></div>
+          </div>
+          <button class="btn-reservar" onclick="event.stopPropagation();abrirModal('Chalé Lago','R$1.100')">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="chale-card reveal" style="transition-delay:0.2s" onclick="abrirModal('Chalé Estrelas','R$1.200')">
+      <div class="chale-img">
+        <img src="chale2.jpeg" alt="Chalé Estrelas — Entrada Iluminada">
+        <span class="chale-badge">Novidade</span>
+      </div>
+      <div class="chale-body">
+        <div class="chale-name">Chalé Estrelas</div>
+        <p class="chale-desc">Teto de vidro triangular para admirar as estrelas do cerrado goiano diretamente da cama.</p>
+        <div class="chale-tags">
+          <span class="chale-tag">Teto de Vidro</span>
+          <span class="chale-tag">Lareira</span>
+          <span class="chale-tag">Ofurô</span>
+        </div>
+        <div class="chale-foot">
+          <div>
+            <div class="chale-price-sub">A partir de</div>
+            <div class="chale-price">R$1.200 <small>/ noite</small></div>
+          </div>
+          <button class="btn-reservar" onclick="event.stopPropagation();abrirModal('Chalé Estrelas','R$1.200')">Reservar</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ PACOTES PROMOCIONAIS ═══ -->
+<section class="section pacotes-section" id="pacotes">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;">
+    <div>
+      <div class="sec-tag">Promoções Especiais</div>
+      <h2 class="sec-title">Pacotes <em>Promocionais</em></h2>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-btn" onclick="scrollCarousel(-1)">←</button>
+      <button class="carousel-btn" onclick="scrollCarousel(1)">→</button>
+    </div>
+  </div>
+
+  <div class="pacotes-carousel" id="pacotesCarousel">
+
+    <div class="pacote-card reveal">
+      <div class="pacote-badge-top">Mais Vendido</div>
+      <img class="pacote-img" src="chale1.jpeg" alt="Dia dos Namorados">
+      <div class="pacote-name">Dia dos Namorados</div>
+      <p class="pacote-desc">Uma noite especial com tudo preparado para surpreender quem você ama.</p>
+      <div class="pacote-price">R$1.200 <small>/ casal</small></div>
+      <ul class="pacote-list">
+        <li>Serviço de Quarto</li>
+        <li>Quarto decorativo</li>
+        <li>Lembranças de recepção</li>
+        <li>Café da manhã incluso</li>
+      </ul>
+      <button class="btn-pacote" onclick="abrirModal('Dia dos Namorados','R$1.200')">Reservar Agora →</button>
+    </div>
+
+    <div class="pacote-card featured reveal" style="transition-delay:0.1s">
+      <div class="pacote-badge-top">Recomendado</div>
+      <img class="pacote-img" src="chale3.jpeg" alt="Lua de Mel">
+      <div class="pacote-name">Lua de Mel</div>
+      <p class="pacote-desc">Três noites de romantismo, com jantar à luz de velas e massagem a dois.</p>
+      <div class="pacote-price">R$3.600 <small>/ 3 noites</small></div>
+      <ul class="pacote-list">
+        <li>3 noites no Chalé Nascente</li>
+        <li>Jantar privativo todas as noites</li>
+        <li>Massagem relaxante a dois</li>
+        <li>Passeio guiado pelo cerrado</li>
+        <li>Cesta artesanal de mimosos</li>
+      </ul>
+      <button class="btn-pacote" onclick="abrirModal('Lua de Mel','R$3.600')">Reservar Agora →</button>
+    </div>
+
+    <div class="pacote-card reveal" style="transition-delay:0.2s">
+      <img class="pacote-img" src="chale2.jpeg" alt="Fim de Semana">
+      <div class="pacote-name">Fim de Semana</div>
+      <p class="pacote-desc">Duas noites de descanso total para quem quer se desligar do mundo.</p>
+      <div class="pacote-price">R$2.200 <small>/ 2 noites</small></div>
+      <ul class="pacote-list">
+        <li>2 noites com café incluso</li>
+        <li>Decoração surpresa</li>
+        <li>Lembrança artesanal</li>
+        <li>Acesso às trilhas</li>
+      </ul>
+      <button class="btn-pacote" onclick="abrirModal('Fim de Semana Romântico','R$2.200')">Reservar Agora →</button>
+    </div>
+
+    <div class="pacote-card reveal" style="transition-delay:0.3s">
+      <img class="pacote-img" src="chale1.jpeg" alt="Relaxamento">
+      <div class="pacote-name">Relaxamento Premium</div>
+      <p class="pacote-desc">Para quem precisa de silêncio, natureza e cuidado. Imersão completa de bem-estar.</p>
+      <div class="pacote-price">R$1.800 <small>/ 2 noites</small></div>
+      <ul class="pacote-list">
+        <li>Meditação ao amanhecer</li>
+        <li>Spa day completo</li>
+        <li>Café detox artesanal</li>
+        <li>Banho de ofurô natural</li>
+      </ul>
+      <button class="btn-pacote" onclick="abrirModal('Relaxamento Premium','R$1.800')">Reservar Agora →</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ SERVIÇOS INCLUSOS ═══ -->
+<section class="section servicos-section" id="servicos">
+  <div style="text-align:center;margin-bottom:0.5rem;">
+    <div class="sec-tag" style="justify-content:center;">Comodidades</div>
+    <h2 class="sec-title" style="text-align:center;">Serviços <em>Inclusos</em></h2>
+    <p class="sec-sub" style="text-align:center;margin:0 auto;">Hospedagem premium com tudo que você precisa para uma experiência inesquecível.</p>
+  </div>
+  <div class="servicos-grid">
+    <div class="servico-item reveal">
+      <div class="servico-icon">☕</div>
+      <div class="servico-name">Café da Manhã</div>
+      <p class="servico-desc">Seleção especial de cafés, frutas, pães e itens artesanais servidos para começar o dia da melhor forma.</p>
+    </div>
+    <div class="servico-item reveal" style="transition-delay:0.06s">
+      <div class="servico-icon">🛁</div>
+      <div class="servico-name">Hidromassagem Privativa</div>
+      <p class="servico-desc">Espaço reservado para relaxar com conforto e tranquilidade em meio à natureza.</p>
+    </div>
+    <div class="servico-item reveal" style="transition-delay:0.12s">
+      <div class="servico-icon">🌹</div>
+      <div class="servico-name">Decoração Romântica</div>
+      <p class="servico-desc">Ambientação especial para casais, perfeita para aniversários, pedidos ou momentos inesquecíveis.</p>
+    </div>
+    <div class="servico-item reveal" style="transition-delay:0.18s">
+      <div class="servico-icon">🍽️</div>
+      <div class="servico-name">Serviço de Quarto</div>
+      <p class="servico-desc">Atendimento prático e personalizado para tornar sua estadia ainda mais confortável e privativa.</p>
+    </div>
+    <div class="servico-item reveal" style="transition-delay:0.24s">
+      <div class="servico-icon">🎁</div>
+      <div class="servico-name">Lembranças de Recepção</div>
+      <p class="servico-desc">Kit artesanal de boas-vindas com produtos regionais exclusivos do cerrado goiano.</p>
+    </div>
+    <div class="servico-item reveal" style="transition-delay:0.3s">
+      <div class="servico-icon">⭐</div>
+      <div class="servico-name">Atendimento Personalizado</div>
+      <p class="servico-desc">Equipe preparada para oferecer uma experiência exclusiva e atenciosa do início ao fim.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FAIXA ═══ -->
+<div class="cta-faixa">
+  <div>
+    <h2>Pronto para viver uma<br>experiência <em>inesquecível?</em></h2>
+    <p>Reserve agora e garanta sua data. Vagas limitadas.</p>
+  </div>
+  <button class="btn-cta-inv" onclick="abrirModal('Reserva','R$1.200')">Reservar Minha Estadia</button>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer id="contato">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="logo" href="#">
+        <!-- Footer SVG Logo — same mark, smaller -->
+        <svg class="logo-svg" viewBox="0 0 260 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Águas de Mambaí">
+          <g transform="translate(0,4)">
+            <path d="M22 24 C18 14, 12 8, 14 2 C16 8, 20 12, 22 18" fill="#e07520" opacity="0.9"/>
+            <path d="M22 24 C22 12, 22 4, 26 0 C26 8, 24 14, 22 20" fill="#e07520"/>
+            <path d="M22 24 C26 14, 32 8, 30 2 C28 8, 24 12, 22 18" fill="#e07520" opacity="0.9"/>
+            <path d="M22 26 C16 30 12 36 12 40 C12 46 16.5 50 22 50 C27.5 50 32 46 32 40 C32 36 28 30 22 26Z" fill="#e07520"/>
+            <path d="M19 36 C17.5 38 17 40 18 42 C19 43.5 20.5 44 22 44" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none" stroke-linecap="round"/>
+          </g>
+          <text x="48" y="28" font-family="Cormorant Garamond, Georgia, serif" font-size="22" font-weight="400" fill="#f8f4ef" letter-spacing="1.5">ÁGUAS</text>
+          <text x="48" y="44" font-family="Cormorant Garamond, Georgia, serif" font-size="13" font-weight="300" fill="#e07520" letter-spacing="4">DE MAMBAÍ</text>
+          <line x1="152" y1="16" x2="152" y2="48" stroke="rgba(224,117,32,0.3)" stroke-width="0.75"/>
+          <text x="162" y="29" font-family="Jost, sans-serif" font-size="6.5" font-weight="300" fill="rgba(248,244,239,0.45)" letter-spacing="3">CHALÉS DE LUXO</text>
+          <text x="162" y="41" font-family="Jost, sans-serif" font-size="6.5" font-weight="300" fill="rgba(248,244,239,0.35)" letter-spacing="3">CERRADO GOIANO</text>
+        </svg>
+      </a>
+      <p>Um refúgio de exclusividade e natureza no coração do cerrado goiano. Onde cada detalhe foi pensado para proporcionar momentos inesquecíveis.</p>
+      <div class="footer-social">
+        <a class="social-btn" href="#" title="Instagram">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a class="social-btn" href="https://wa.me/5562999999999" title="WhatsApp">
+          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#chales">Chalés</a></li>
+        <li><a href="#pacotes">Pacotes</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Pacotes</h4>
+      <ul>
+        <li><a href="#pacotes">Dia dos Namorados</a></li>
+        <li><a href="#pacotes">Lua de Mel</a></li>
+        <li><a href="#pacotes">Fim de Semana</a></li>
+        <li><a href="#pacotes">Relaxamento Premium</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <div class="contact-item">📍 Mambaí, Goiás — Brasil</div>
+      <div class="contact-item">📞 (62) 9 9999-9999</div>
+      <div class="contact-item">✉️ reservas@aguasdemambai.com.br</div>
+      <div class="contact-item">🕐 Seg–Dom, 8h às 22h</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Águas de Mambaí. Todos os direitos reservados.</p>
+    <p>Desenvolvido com ♥ para momentos inesquecíveis</p>
+  </div>
+</footer>
+
+<!-- ═══ WHATSAPP FLOAT ═══ -->
+<a class="wa-float" href="https://wa.me/5562999999999" target="_blank" title="WhatsApp">
+  <svg width="24" height="24" fill="white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ═══ MODAL DE RESERVA ═══ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+
+    <!-- Loading -->
+    <div class="overlay-panel" id="loadingOverlay">
+      <div class="spinner"></div>
+      <p class="loading-text">Processando sua reserva...</p>
+    </div>
+
+    <!-- Success -->
+    <div class="overlay-panel" id="successOverlay">
+      <div class="success-check">✓</div>
+      <div class="success-title">Reserva Confirmada!</div>
+      <p class="success-sub">Sua experiência está garantida. Em breve você receberá um e-mail de confirmação com todos os detalhes da sua estadia.</p>
+      <div class="success-code" id="successCode">ADM-00000</div>
+      <button class="btn-fechar-success" onclick="fecharModal()">Perfeito, obrigado!</button>
+    </div>
+
+    <!-- Header -->
+    <div class="modal-header">
+      <div class="modal-tag">Reserva Segura</div>
+      <div class="modal-title">Finalizar Reserva</div>
+      <div class="modal-sub" id="modalChaleNome">Chalé Nascente</div>
+      <button class="modal-close" onclick="fecharModal()">✕</button>
+    </div>
+
+    <!-- Body -->
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nome Completo</label>
+          <input type="text" class="form-input" placeholder="Seu nome completo">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Telefone / WhatsApp</label>
+          <input type="tel" class="form-input" placeholder="(62) 9 9999-9999">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">E-mail</label>
+        <input type="email" class="form-input" placeholder="seu@email.com">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Check-in</label>
+          <input type="date" class="form-input">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Check-out</label>
+          <input type="date" class="form-input">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Hóspedes</label>
+          <select class="form-input">
+            <option>1 hóspede</option>
+            <option selected>2 hóspedes</option>
+            <option>3 hóspedes</option>
+            <option>4 hóspedes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Observações</label>
+          <input type="text" class="form-input" placeholder="Opcional">
+        </div>
+      </div>
+
+      <div class="form-divider">Pagamento</div>
+
+      <div class="pag-tabs">
+        <button class="pag-tab active" onclick="selectPag(this,'cartao')">💳 Cartão</button>
+        <button class="pag-tab" onclick="selectPag(this,'pix')">📱 Pix</button>
+        <button class="pag-tab" onclick="selectPag(this,'boleto')">📄 Boleto</button>
+      </div>
+
+      <div id="pagCartao" style="display:flex;flex-direction:column;gap:1rem;">
+        <div class="form-group">
+          <label class="form-label">Número do Cartão</label>
+          <div class="card-wrapper">
+            <input type="text" class="form-input" placeholder="0000 0000 0000 0000" maxlength="19" oninput="formatCard(this)">
+            <span class="card-brand" id="cardBrand">💳</span>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Validade</label>
+            <input type="text" class="form-input" placeholder="MM/AA" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label class="form-label">CVV</label>
+            <input type="text" class="form-input" placeholder="000" maxlength="3">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nome no Cartão</label>
+          <input type="text" class="form-input" placeholder="Como aparece no cartão">
+        </div>
+      </div>
+
+      <div id="pagPix" style="display:none">
+        <div class="pag-box">
+          <div class="pag-box-icon">📱</div>
+          <div class="pag-box-title">Chave Pix</div>
+          <div class="pag-box-info">aguasdemambai@pix.com.br<br><br>Após o pagamento, envie o comprovante via WhatsApp para confirmar sua reserva.</div>
+        </div>
+      </div>
+
+      <div id="pagBoleto" style="display:none">
+        <div class="pag-box">
+          <div class="pag-box-icon">📄</div>
+          <div class="pag-box-title">Boleto Bancário</div>
+          <div class="pag-box-info">O boleto será gerado após confirmação e enviado ao seu e-mail.<br>Vencimento: 3 dias úteis.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer">
+      <div class="total-bar">
+        <span class="total-label">Total da Reserva</span>
+        <span class="total-value" id="modalTotal">R$850</span>
+      </div>
+      <button class="btn-finalizar" onclick="finalizarReserva()">Finalizar Reserva →</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// Header scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('header').classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Mobile menu
+function toggleMenu(){
+  const h=document.getElementById('hamburger');
+  const n=document.getElementById('navMobile');
+  h.classList.toggle('open');
+  n.classList.toggle('open');
+  document.body.style.overflow=n.classList.contains('open')?'hidden':'';
+}
+
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Carousel
+function scrollCarousel(dir){
+  const c=document.getElementById('pacotesCarousel');
+  c.scrollBy({left:dir*300,behavior:'smooth'});
+}
+
+// Modal
+function abrirModal(nome,preco){
+  document.getElementById('modalChaleNome').textContent=nome||'Chalé Nascente';
+  document.getElementById('modalTotal').textContent=preco||'R$850';
+  document.getElementById('loadingOverlay').classList.remove('show');
+  document.getElementById('successOverlay').classList.remove('show');
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function fecharModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.getElementById('modalOverlay').addEventListener('click',function(e){
+  if(e.target===this)fecharModal();
+});
+
+// Payment tabs
+function selectPag(btn,tipo){
+  document.querySelectorAll('.pag-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  const cartao=document.getElementById('pagCartao');
+  cartao.style.display=tipo==='cartao'?'flex':'none';
+  document.getElementById('pagPix').style.display=tipo==='pix'?'block':'none';
+  document.getElementById('pagBoleto').style.display=tipo==='boleto'?'block':'none';
+}
+
+// Card format
+function formatCard(input){
+  let v=input.value.replace(/\D/g,'').slice(0,16);
+  input.value=v.replace(/(.{4})/g,'$1 ').trim();
+  const brand=document.getElementById('cardBrand');
+  if(v.startsWith('4'))brand.textContent='💳';
+  else if(v.startsWith('5'))brand.textContent='💳';
+  else brand.textContent='💳';
+}
+
+// Finalizar
+function finalizarReserva(){
+  const loading=document.getElementById('loadingOverlay');
+  const success=document.getElementById('successOverlay');
+  loading.classList.add('show');
+  setTimeout(()=>{
+    loading.classList.remove('show');
+    document.getElementById('successCode').textContent='ADM-'+Math.floor(10000+Math.random()*90000);
+    success.classList.add('show');
+  },2600);
+}
+</script>
+</body>
+</html>
